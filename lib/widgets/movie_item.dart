@@ -8,16 +8,18 @@ class MovieItem extends StatelessWidget {
     required this.subtitle,
   });
 
-  final String imagePath;
+  final String? imagePath;
   final String title;
   final String subtitle;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(imagePath),
-      ),
+      leading: imagePath != null
+          ? CircleAvatar(
+              backgroundImage: NetworkImage(imagePath!),
+            )
+          : const Icon(Icons.movie),
       title: Text(title),
       subtitle: Text(subtitle),
     );
